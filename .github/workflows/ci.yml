@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Node 20 · 静态检查 + 握手测试
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install（零依赖，无 lockfile 时跳过）
+        run: npm ci || true
+
+      - name: Syntax check
+        run: |
+          set -euo pipefail
+          node --check index.js
+          while IFS= read -r f; do
+            echo "node --check $f"
+            node --check "$f"
+          done < <(git ls-files '*.mjs')
+
+      - name: Test
+        run: npm test

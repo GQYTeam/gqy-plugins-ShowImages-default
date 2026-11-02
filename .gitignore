@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# 依赖与构建产物
+node_modules/
+dist/
+tmp/
+
+# 日志与系统垃圾
+*.log
+Thumbs.db

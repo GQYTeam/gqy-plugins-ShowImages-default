@@ -1,0 +1,18 @@
+{
+  "name": "gqy-plugins-show-images-default",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GQY 图片展示插件：13 张风格化示例图，供产物灯箱与对话展示",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GQYTeam/gqy-plugins-ShowImages-default.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "test": "node test/handshake.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

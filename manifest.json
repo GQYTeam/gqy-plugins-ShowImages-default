@@ -1,0 +1,32 @@
+{
+  "id": "show-images-default",
+  "name": "图片展示示例",
+  "version": "1.0.0",
+  "description": "预置 13 张风格化示例图，供产物灯箱与对话里的图片展示使用",
+  "protocol": "gqy-jsonrpc-v1",
+  "command": ["node", "index.js"],
+  "cwd": ".",
+  "timeout_ms": 10000,
+  "concurrency": "concurrent",
+  "actions": [
+    {
+      "name": "list",
+      "description": "列出全部示例图片（名称、风格、文件路径、字节数）",
+      "schema": {"type": "object", "properties": {}}
+    },
+    {
+      "name": "show",
+      "description": "按名称展示一张示例图片；inline=true 时同时返回 data URI",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string", "description": "图片名称，如 01-工笔淡彩"},
+          "inline": {"type": "boolean", "description": "是否内联返回 data URI"}
+        },
+        "required": ["name"]
+      }
+    }
+  ],
+  "provides": [],
+  "requires": []
+}
